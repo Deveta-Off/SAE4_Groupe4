@@ -12,6 +12,7 @@ import http from 'http';
 import dotenv from 'dotenv';
 dotenv.config();
 import {fromURL} from 'node-ical';
+import { Server } from 'socket.io';
 
 const pool = createPool({
   connectionLimit: 10,
@@ -133,6 +134,10 @@ app.get('/leaderboard', async (req, res) => {
     isLoggedIn: req.session.isLoggedIn,
   });
 });
+
+app.get('/chat', async (req, res) => {
+  res.render("chat");
+})
 //functions stuff
 
 function getVersion() {
@@ -703,7 +708,7 @@ export {
 import fs from 'fs';
 
 const PORT = process.env.PORT || 443;
-https
+let server = https
   .createServer(
     {
       key: fs.readFileSync('server-key.pem'),
@@ -714,5 +719,17 @@ https
   .listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
+
+
+//Socket.io stuff
+const io = new Server(server);
+
+io.engine.use(session);
+io.on('connection', (socket) => {
+  console.log("yo");
+  socket.on("msg", (args) => {
+    console.log(socket.request);
+  })
+});
 
 export default app;
