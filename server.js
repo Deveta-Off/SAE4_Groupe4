@@ -38,16 +38,18 @@ app.set('view engine', 'ejs');
 
 app.use(json());
 app.use(express.static('public'));
-app.use(
-  session({
-    secret: 'SECRET_COOKIE_KEY',
-    resave: false,
-    saveUninitialized: true,
 
-    cookie: {
-      maxAge: 365 * 24 * 60 * 60 * 1000, // Set the session cookie to last for 1 year (adjust the duration as needed)
-    },
-  })
+const sessionMiddleWare = session({
+  secret: 'fgjfhebjcjksdvd54657654676', 
+  resave: false, 
+  saveUninitialized: true, 
+
+  cookie: {
+    maxAge: 365 * 24 * 60 * 60 * 1000, // Définissez la durée de vie du cookie de session
+  },
+})
+app.use(
+  sessionMiddleWare
 );
 
 let passcodes = {};
@@ -724,11 +726,10 @@ let server = https
 //Socket.io stuff
 const io = new Server(server);
 
-io.engine.use(session);
+io.engine.use(sessionMiddleWare);
 io.on('connection', (socket) => {
-  console.log("yo");
-  socket.on("msg", (args) => {
-    console.log(socket.request);
+  socket.on("sendMsg", (msg) => {
+    socket.broadcast.emit("msgReceived", msg);
   })
 });
 
