@@ -577,6 +577,7 @@
 
       button.innerText = 'Modifier';
       button.setAttribute('onclick', `enableInput('${elem}')`);
+      window.location.reload();
     }
 
     document.querySelectorAll('.gradeprice:not(.xpamount)').forEach((elem) => {
@@ -606,7 +607,9 @@
             userAlert('Prix modifiés');
             window.location.reload();
           } else {
-            userAlert('Erreur lors de la modification des prix');
+            res.json().then((data) => {
+              userAlert(data.error);
+            });
           }
         });
       });
