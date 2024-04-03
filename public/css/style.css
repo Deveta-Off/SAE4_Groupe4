@@ -734,15 +734,15 @@ em {
 }
 
 #photoGrid img {
-  background-color: rgb(184, 184, 184);
-  max-width: 100%;
-  border-radius: 9px;
-  object-fit: cover;
-  object-position: center;
-  height: 100%;
-  flex-grow: 1;
-  transition: 250ms;
-  position: absolute;
+    background-color: rgb(184, 184, 184);
+    max-width: 100%;
+    border-radius: 9px;
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+    flex-grow: 1;
+    transition: 250ms;
+    position: absolute;
 }
 
 #photoGrid img:not(.selected) {
@@ -2019,6 +2019,7 @@ p.pdfText {
 
 /*Socket.io discussion*/
 #chatDiv {
+    z-index: 999;
     position: fixed;
     bottom: 0rem;
     right: 1rem;
@@ -2063,7 +2064,7 @@ p.pdfText {
 
 /* Image dans le header */
 #chatDiv.isOpened #chatDivHeader img {
-    max-width: 100%; /* Spécifier une largeur maximale pour l'image */
+    max-width: 2rem; /* Spécifier une largeur maximale pour l'image */
     height: auto; /* Maintenir les proportions de l'image */
 }
 
