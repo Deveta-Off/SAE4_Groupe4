@@ -562,8 +562,14 @@ app.use("/api/admin/updateGrades", updateGrades);
 import removeUser from "./api/admin/removeUser.js";
 app.use("/api/admin/removeUser", removeUser);
 
-import addUser from "./api/admin/addUser.js";
-app.use("/api/admin/addUser", addUser);
+import removeProduct from './api/admin/removeProduct.js';
+app.use('/api/admin/removeProduct', removeProduct);
+
+import removeSale from './api/admin/removeSale.js';
+app.use('/api/admin/removeSale', removeSale);
+
+import addUser from './api/admin/addUser.js';
+app.use('/api/admin/addUser', addUser);
 
 import searchUser from "./api/admin/searchUser.js";
 app.use("/api/admin/searchUser", searchUser);

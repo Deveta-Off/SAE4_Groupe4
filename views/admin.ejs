@@ -345,10 +345,10 @@
           body: JSON.stringify({email, eventId, xp}),
         }).then((res) => {
           if (res.status === 200) {
-            userAlertGood('Utilisateur ajouté. Rafraichir la page pour voir les changements');
+            userAlertGood('Utilisateur ajouté');
             setTimeout(() => {
-                window.location.reload();
-              }, 1000);
+              window.location.reload();
+            }, 1000);
           } else {
             userAlert("Erreur lors de l'ajout de l'utilisateur");
           }
@@ -368,7 +368,7 @@
         body: JSON.stringify({email, eventId}),
       }).then((res) => {
         if (res.status === 200) {
-          userAlertGood('Utilisateur supprimé. Rafraichir la page pour voir les changements');
+          userAlertGood('Utilisateur supprimé');
           setTimeout(() => {
             window.location.reload();
           }, 1000);
@@ -625,8 +625,10 @@
         body: JSON.stringify(data),
       }).then((res) => {
         if (res.status === 200) {
-          userAlert("Quantité d'xp que rapportent les events modifiée");
-          window.location.reload();
+          userAlertGood("Quantité d'xp que rapportent les events modifiée");
+            setTimeout(() => {
+              window.location.reload();
+            }, 1000);
         } else if (res.status === 400) {
           userAlert("La quantité d'xp doit être un nombre");
         } else {
@@ -651,8 +653,10 @@
           body: JSON.stringify(data),
         }).then((res) => {
           if (res.status === 200) {
-            userAlert("Seuil d'xp pour renouveller le grade modifié");
-            window.location.reload();
+            userAlertGood("Seuil d'xp pour renouveller le grade modifié");
+            setTimeout(() => {
+              window.location.reload();
+            }, 1000);
           } else if (res.status === 400) {
             userAlert("La quantité d'xp doit être un nombre");
           } else {
@@ -696,8 +700,10 @@
         },
       }).then((res) => {
         if (res.status === 200) {
-          userAlert('Grades des utilisateurs mis à jour');
-          window.location.reload();
+          userAlertGood('Grades des utilisateurs mis à jour');
+            setTimeout(() => {
+              window.location.reload();
+            }, 1000);
         } else {
           userAlert('Erreur lors de la mise à jour des grades');
         }
