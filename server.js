@@ -733,7 +733,6 @@ io.on("connection", (socket) => {
     let rooms = Array.from(socket.rooms);
     if (rooms.length > 1) {
       const roomName = rooms[1];
-      console.log(roomName);
       socket.broadcast.to(roomName).emit("msgReceived", { author : socket.request.session.username, msg : msg});
     } else {
       socket.broadcast.to("general").emit("msgReceived", { author : socket.request.session.username, msg : msg});
