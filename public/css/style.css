@@ -709,6 +709,7 @@ em {
     flex-grow: 1;
     transition: 250ms;
     position: absolute;
+    z-index: 0;
 }
 
 #photoGrid img:not(.selected) {
@@ -1985,6 +1986,7 @@ p.pdfText {
 
 /*Socket.io discussion*/
 #chatDiv {
+    z-index: 999;
     position: fixed;
     bottom: 0rem;
     right: 1rem;
@@ -2029,7 +2031,7 @@ p.pdfText {
 
 /* Image dans le header */
 #chatDiv.isOpened #chatDivHeader img {
-    max-width: 100%; /* Spécifier une largeur maximale pour l'image */
+    max-width: 2rem; /* Spécifier une largeur maximale pour l'image */
     height: auto; /* Maintenir les proportions de l'image */
 }
 
