@@ -71,7 +71,7 @@
             </button>
           </span>
           <button type="submit" style="display: none" id="validateForm">
-            Valider
+            Valider 
           </button>
         </form>
       </div>
@@ -357,7 +357,7 @@
             userAlertGood('Utilisateur ajouté. Rafraichir la page pour voir les changements');
             setTimeout(() => {
                 window.location.reload();
-              }, 0);
+              }, 1000);
           } else {
             userAlert("Erreur lors de l'ajout de l'utilisateur");
           }
@@ -380,7 +380,7 @@
           userAlertGood('Utilisateur supprimé. Rafraichir la page pour voir les changements');
           setTimeout(() => {
             window.location.reload();
-          }, 0);
+          }, 1000);
         } else {
           userAlert("Erreur lors de la suppression de l'utilisateur");
         }
@@ -607,8 +607,10 @@
           body: JSON.stringify(data),
         }).then((res) => {
           if (res.status === 200) {
-            userAlert('Prix modifiés');
-            window.location.reload();
+            userAlertGood('Prix modifiés');
+            setTimeout(() => {
+              window.location.reload();
+            }, 1000);
           } else {
             userAlert('Erreur lors de la modification des prix');
           }
