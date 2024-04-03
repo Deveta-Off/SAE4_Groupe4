@@ -355,7 +355,9 @@
         }).then((res) => {
           if (res.status === 200) {
             userAlertGood('Utilisateur ajouté. Rafraichir la page pour voir les changements');
-            
+            setTimeout(() => {
+                window.location.reload();
+              }, 0);
           } else {
             userAlert("Erreur lors de l'ajout de l'utilisateur");
           }
@@ -376,7 +378,9 @@
       }).then((res) => {
         if (res.status === 200) {
           userAlertGood('Utilisateur supprimé. Rafraichir la page pour voir les changements');
-          
+          setTimeout(() => {
+            window.location.reload();
+          }, 0);
         } else {
           userAlert("Erreur lors de la suppression de l'utilisateur");
         }
