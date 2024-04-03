@@ -137,13 +137,8 @@ app.get('/leaderboard', async (req, res) => {
   });
 });
 
-app.get('/chat', async (req, res) => {
-  res.render("chat");
-})
-
 app.get('/', (req, res) => {
-  const category = 'admin';
-  res.render('index', { category });
+  res.render('index');
 });
 
 //functions stuff
