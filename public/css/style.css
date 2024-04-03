@@ -2061,11 +2061,25 @@ p.pdfText {
     cursor: pointer;
 }
 
+/* Image dans le header */
+#chatDiv.isOpened #chatDivHeader img {
+    max-width: 100%; /* Spécifier une largeur maximale pour l'image */
+    height: auto; /* Maintenir les proportions de l'image */
+}
+
 /*Sélection de la classe (quand le chat est ouvert)*/
 #chatDiv #chatDivClassSelection {
     display: flex;
     flex-direction: row;
-    width: 100%;
+    flex-grow: 1;
+}
+
+/*Sélection de la classe - Classe sélectionnée*/
+#chatDiv #chatDivClassSelection .selectedClass{
+    background: var(--color-gradient);
+    color: transparent;
+    background-clip: text;
+    transition: all .15s ease-out; /* Ajout de la transition */
 }
 
 /*La liste des messages*/
@@ -2080,26 +2094,69 @@ p.pdfText {
     overflow-wrap: break-word;
 }
 
-/*Div pour un message unique (envoyé par un autre)*/
-#chatDiv #chatDivContent .chatDivMessage {
+/*Div contenant un message unique*/
+#chatDiv #chatDivContent .chatDivHolder {
+    width: fit-content;
+    max-width: 50%;
+
+}
+
+/*Contenu d'un message unique (envoyé par un autre)*/
+#chatDiv #chatDivContent .chatDivMessageContent {
     background-color: gray;
     color: white;
     padding: 1rem;
     border-radius: 20px 20px 20px 0;
     word-wrap: break-word;
-    width: fit-content;
-    max-width: 50%;
 }
 
-/*Div pour un message unique (envoyé par soi)*/
-#chatDiv #chatDivContent .chatDivMessage.self {
+/*Contenu d'un message unique (envoyé par soi)*/
+#chatDiv #chatDivContent .chatDivMessageContent.self {
     background-color: blue;
     border-radius: 20px 20px 0 20px;
-    align-self: end;
 }
 
+/*Form qui permet d'envoyer un message*/
 #chatDiv #chatDivInput {
+    padding: .75rem .75rem .5rem;
+}
+
+/*Div dans la form contenant les input pour envoyer un message*/
+#chatDiv #chatDivInput .chatDivInputMsg{
+    display: flex;
+    gap: 1rem;
+}
+
+/*Div dans la form contenant les infos de qui est en train d'écrire*/
+#chatDiv #chatDivInput .chatDivInputStatus {
+    margin-top: 0.2rem;
+    font-size: .75rem;
+}
+
+/*L'input qui permet d'envoyer un message*/
+#chatDiv #chatDivInput input[type="text"] {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    padding: .25rem;
+    flex-grow: 1;
+}
+
+/*L'input qui permet de confirmer l'envoi d'un message*/
+#chatDiv #chatDivInput input[type="submit"] {
+    height: -moz-fit-content;
+    height: fit-content;
+    margin: auto 0;
+    background-color: var(--casual-text-color);
+    border: none;
+    color: var(--background-color);
     padding: .5rem;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+#chatDiv #chatDivInput input[type="text"]:focus {
+    outline: none;
 }
 
 @media only screen and (max-width: 775px) {
