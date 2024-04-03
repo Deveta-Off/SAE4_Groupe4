@@ -620,7 +620,7 @@
       const data = {
         xpAmount,
       };
-      fetch('/admin/changeXp', {
+      fetch('/api/admin/changeXpAmount', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -642,7 +642,7 @@
       .getElementById('changeXpThresholdForm')
       .addEventListener('submit', (e) => {
         e.preventDefault();
-        const xpAmount = document.getElementById('xpThreshold').value;
+        const xpThreshold = document.getElementById('xpThreshold').value;
         const data = {
           xpThreshold,
         };
