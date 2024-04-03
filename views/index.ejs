@@ -13,7 +13,7 @@
   </head>
 
   <body data-theme="light" id="homeBody">
-    <%- include('header', {cartSize, isLoggedIn}) %>
+    <%- include('header', {cartSize, isLoggedIn, category}) %>
 
     <span id="top"></span>
     <div id="accueil">
@@ -217,6 +217,9 @@
     </footer>
   </body>
   <script>
+    app.get('/', (req, res) => {
+  res.render('index', { cartSize: req.session.cartSize || 0, isLoggedIn: req.session.isLoggedIn || false });
+}); 
     const decodedData = JSON.parse('<%- JSON.stringify(events) %>');
 
     window.calData = decodedData;
