@@ -28,19 +28,16 @@
           style="display: flex; flex-direction: column"
           class="adminForm"
         >
-          <span
-            ><label for="iron">Iron</label>
+          <span>
+            <label for="iron">Iron</label>
             <input
               type="number"
               name="ironprice"
               id="iron"
-              class="gradeprice"
-              disabled
+              class="gradeprice xpamount"
               value="<%- ironprice %>"
             />
-            <button type="button" onclick="enableInput('iron')">
-              Modifier
-            </button>
+            <button type="submit">Valider</button>
           </span>
           <span>
             <label for="gold">Gold</label>
@@ -48,13 +45,10 @@
               type="number"
               name="goldprice"
               id="gold"
-              class="gradeprice"
-              disabled
+              class="gradeprice xpamount"
               value="<%- goldprice %>"
             />
-            <button type="button" onclick="enableInput('gold')">
-              Modifier
-            </button>
+            <button type="submit">Valider</button>
           </span>
           <span>
             <label for="diamant">Diamant</label>
@@ -62,13 +56,10 @@
               type="number"
               name="diamantprice"
               id="diamant"
-              class="gradeprice"
-              disabled
+              class="gradeprice xpamount"
               value="<%- diamantprice %>"
             />
-            <button type="button" onclick="enableInput('diamant')">
-              Modifier
-            </button>
+            <button type="submit">Valider</button>
           </span>
           <button type="submit" style="display: none" id="validateForm">
             Valider 
@@ -581,6 +572,7 @@
 
       button.innerText = 'Modifier';
       button.setAttribute('onclick', `enableInput('${elem}')`);
+      window.location.reload();
     }
 
     document.querySelectorAll('.gradeprice:not(.xpamount)').forEach((elem) => {
@@ -612,7 +604,9 @@
               window.location.reload();
             }, 1000);
           } else {
-            userAlert('Erreur lors de la modification des prix');
+            res.json().then((data) => {
+              userAlert(data.error);
+            });
           }
         });
       });
@@ -623,7 +617,7 @@
       const data = {
         xpAmount,
       };
-      fetch('/admin/changeXp', {
+      fetch('/api/admin/changeXpAmount', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -647,7 +641,7 @@
       .getElementById('changeXpThresholdForm')
       .addEventListener('submit', (e) => {
         e.preventDefault();
-        const xpAmount = document.getElementById('xpThreshold').value;
+        const xpThreshold = document.getElementById('xpThreshold').value;
         const data = {
           xpThreshold,
         };

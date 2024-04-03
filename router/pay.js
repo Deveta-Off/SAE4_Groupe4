@@ -165,6 +165,7 @@ router.get('', async (req, res) => {
         paypalClientId: process.env.PAYPAL_CLIENT_ID,
         cartSize: itemsToSend && itemsToSend.length,
         isLoggedIn: req.session.isLoggedIn,
+        category: req.session.category,
         cart: itemsToSend,
       });
     });
