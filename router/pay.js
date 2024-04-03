@@ -83,7 +83,7 @@ router.get('', async (req, res) => {
       let id = generateEventId(event.start, event.summary);
 
       if (event.description === undefined) return;
-
+      console.log(event)
       var eventDescription = cleanStringToObject(event.description);
       event.price = parseFloat(eventDescription['prix']);
       event.description = eventDescription['description'];
