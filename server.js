@@ -135,9 +135,10 @@ app.get("/leaderboard", async (req, res) => {
   });
 });
 
-app.get("/chat", async (req, res) => {
-  res.render("chat");
+app.get('/', (req, res) => {
+  res.render('index');
 });
+
 //functions stuff
 
 function getVersion() {
