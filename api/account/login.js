@@ -7,7 +7,7 @@ router.post('', async (req, res) => {
 
   try {
     const [results] = await pool.query(
-      'SELECT category, email, xp, name FROM user LEFT JOIN grade ON grade.id = user.grade WHERE username = ? AND password = ?',
+      'SELECT category, email, xp, name FROM user LEFT JOIN grade ON grade.id = user.grade WHERE email = ? AND password = ?',
       [username, password]
     );
 
@@ -18,7 +18,7 @@ router.post('', async (req, res) => {
 
     await setSessionItems(
       req,
-      username,
+      results[0].username,
       results[0].category,
       results[0].email,
       results[0].xp,
