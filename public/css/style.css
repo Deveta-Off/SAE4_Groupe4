@@ -135,6 +135,11 @@ body#md p {
   width: 40%;
 }
 
+.disabled {
+  pointer-events: none;
+  opacity: 0.2;
+}
+
 .close {
   color: #aaaaaa;
   float: right;
