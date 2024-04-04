@@ -2,19 +2,17 @@ import express from 'express';
 const router = express.Router();
 import {pool} from '../server.js';
 
-router.get('/:productName', async (req, res) => {
+router.get('/:productId', async (req, res) => {
   var product = [];
   var sizes = [];
-  var productNameFromUrl = req.params.productName;
+  var productIdFromUrl = req.params.productId;
   //sanitize the product name to avoid SQL injection
-  productNameFromUrl = productNameFromUrl.replace(/['"]/g, '');
-  // Remove dashes and spaces from the product name in the URL
-  const cleanedProductNameFromUrl = productNameFromUrl.replace(/[-\s]/g, '');
+  productIdFromUrl = productIdFromUrl.replace(/['"]/g, '');
 
   try {
     const [productResults] = await pool.query(
-      'SELECT * FROM product WHERE REPLACE(REPLACE(name, "-", ""), " ","") = ?',
-      [cleanedProductNameFromUrl]
+      'SELECT * FROM product WHERE id = ?',
+      [productIdFromUrl]
     );
 
     if (productResults.length === 0) {
@@ -39,7 +37,6 @@ router.get('/:productName', async (req, res) => {
         'SELECT name FROM product_color JOIN color ON color.id = product_color.color_id WHERE product_id = ?',
         [product.id]
       );
-
       colors = colorResults.map((color) => color.name);
     } else {
       colors.push(product.color);
