@@ -1614,6 +1614,7 @@ un {
   padding-top: 10vh;
   justify-content: center;
   cursor: not-allowed;
+  overflow: auto;
 }
 
 #overlay > svg#loader {
