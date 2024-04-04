@@ -371,8 +371,8 @@ function showSales(id) {
             });
         }
       });
-      divUser.appendChild(btnDeleteSale);
       divUser.appendChild(saleUser);
+      divUser.appendChild(btnDeleteSale);
       saleDiv.appendChild(divUser);
 
       if (
