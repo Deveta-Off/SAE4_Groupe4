@@ -37,8 +37,8 @@
       <% products.forEach((product) => { %>
       <div
         class="product verticalflex"
-        onclick='location.href="product/<%= product.name.replace(` `, `-`) %>"'
-        onkeydown="if(event.keyCode == 13) location.href='product/<%= product.name.replace(` `, `-`) %>'"
+        onclick='location.href="product/<%= product.id %>"'
+        onkeydown="if(event.keyCode == 13) location.href='product/<%= product.id %>'"
         tabindex="2"
       >
         <div
