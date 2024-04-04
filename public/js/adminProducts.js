@@ -32,7 +32,7 @@ function closePopup() {
 
 function deleteProduct(id) {
   if (confirm("Voulez-vous vraiment supprimer ce produit ?")) {
-    fetch("/api/admin/removeProduct", {
+    fetch("/api/admin/product/remove", {
       method: "POST",
       body: JSON.stringify({
         id: id,
