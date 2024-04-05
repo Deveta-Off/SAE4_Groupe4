@@ -7,7 +7,7 @@ router.post('', async (req, res) => {
 
   try {
     const [results] = await pool.query(
-      'SELECT category, email, xp, name FROM user LEFT JOIN grade ON grade.id = user.grade WHERE email = ? AND password = ?',
+      'SELECT username, category, email, xp, name FROM user LEFT JOIN grade ON grade.id = user.grade WHERE email = ? AND password = ?',
       [username, password]
     );
 

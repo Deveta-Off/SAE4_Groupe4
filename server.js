@@ -734,7 +734,7 @@ const io = new Server(server);
 io.engine.use(sessionMiddleWare);
 io.on("connection", (socket) => {
   socket.join("general");
-
+  console.log(socket.request.session);
   //Envoi de messages
   socket.on("sendMsg", (msg) => {
     let rooms = Array.from(socket.rooms);
